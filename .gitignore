@@ -1,0 +1,6 @@
+# Ignore the data folder
+data/
+
+# System and IDE junk files
+.venv/
+__pycache__/
