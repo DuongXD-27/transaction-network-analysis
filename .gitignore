@@ -1,6 +1,16 @@
-# Ignore the data folder
-data/
-
-# System and IDE junk files
+# Environments
 .venv/
+env/
+
+# Data
+data/*
+
+# Models
+saved_models/*.pkl
+
+# Python artifacts
 __pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.ipynb_checkpoints/
