@@ -102,4 +102,4 @@ def load_graph_data(force_rebuild=False) -> Data:
 
 
 if __name__ == "__main__":
-    df = load_and_prep_tabular_data()
+    data = load_graph_data()
