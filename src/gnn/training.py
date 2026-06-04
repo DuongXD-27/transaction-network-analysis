@@ -44,16 +44,6 @@ def evaluate(model, data, criterion, mask) -> dict:
     }
 
 
-def train_one_epoch(model, data, optimizer, criterion):
-    model.train()
-    optimizer.zero_grad()
-    out = model(data.x, data.edge_index)
-    loss = criterion(out[data.train_mask], data.y[data.train_mask])
-    loss.backward()
-    optimizer.step()
-    return loss.item()
-
-
 def train_one_epoch(model, data, optimizer, criterion, clip_grad_norm=None):
     model.train()
     optimizer.zero_grad()
@@ -77,7 +67,7 @@ def train_with_early_stopping(
     num_epochs: int = 200,
     patience: int = 20,
     monitor_metric: str = 'f1_ill',
-    clip_grad_norm: float = None,
+    clip_grad_norm=None,
 ) -> dict:
     history = {'train_loss': [], 'val_loss': [], 'train_f1': [], 'val_f1': []}
     best_val_score = 0.0
@@ -87,7 +77,39 @@ def train_with_early_stopping(
     for epoch in range(1, num_epochs + 1):
         train_loss = train_one_epoch(model, data, optimizer, criterion, clip_grad_norm=clip_grad_norm)
 
+        train_metrics = evaluate(model, data, criterion, data.train_mask)
+        val_metrics = evaluate(model, data, criterion, data.val_mask)
 
+        train_f1 = train_metrics['f1_ill']
+        val_f1 = val_metrics['f1_ill']
+
+        history['train_loss'].append(train_loss)
+        history['val_loss'].append(val_metrics['loss'])
+        history['train_f1'].append(train_f1)
+        history['val_f1'].append(val_f1)
+
+        if val_metrics[monitor_metric] > best_val_score:
+            best_val_score = val_metrics[monitor_metric]
+            best_epoch = epoch
+            torch.save(model.state_dict(), save_path)
+            epochs_no_improve = 0
+        else:
+            epochs_no_improve += 1
+
+        print(f"Epoch {epoch:03d}: Train Loss={train_loss:.4f}, "
+              f"Train F1={train_f1:.4f}, Val F1={val_f1:.4f}, "
+              f"Gap={train_f1 - val_f1:.4f}")
+
+        if epochs_no_improve >= patience:
+            print(f"\nEarly stopping at epoch {epoch} (Best epoch: {best_epoch})")
+            break
+
+    print(f"\nBest Val {monitor_metric}: {best_val_score:.4f} at epoch {best_epoch}")
+    print(f"Train F1 at best epoch: {history['train_f1'][best_epoch-1]:.4f}")
+    print(f"Val   F1 at best epoch: {history['val_f1'][best_epoch-1]:.4f}")
+    print(f"Gap at best epoch: {history['train_f1'][best_epoch-1] - history['val_f1'][best_epoch-1]:.4f}")
+
+    return history
 
 def print_test_evaluation(model, data, criterion, label: str = "Test") -> None:
     test_metrics = evaluate(model, data, criterion, data.test_mask)
