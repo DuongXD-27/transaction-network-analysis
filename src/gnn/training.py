@@ -44,12 +44,16 @@ def evaluate(model, data, criterion, mask) -> dict:
     }
 
 
-def train_one_epoch(model, data, optimizer, criterion):
+def train_one_epoch(model, data, optimizer, criterion, clip_grad_norm=None):
     model.train()
     optimizer.zero_grad()
     out = model(data.x, data.edge_index)
     loss = criterion(out[data.train_mask], data.y[data.train_mask])
     loss.backward()
+    
+    if clip_grad_norm is not None:
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=clip_grad_norm)
+        
     optimizer.step()
     return loss.item()
 
@@ -63,6 +67,7 @@ def train_with_early_stopping(
     num_epochs: int = 200,
     patience: int = 20,
     monitor_metric: str = 'f1_ill',
+    clip_grad_norm=None,
 ) -> dict:
     history = {'train_loss': [], 'val_loss': [], 'train_f1': [], 'val_f1': []}
     best_val_score = 0.0
@@ -70,7 +75,7 @@ def train_with_early_stopping(
     best_epoch = 0
 
     for epoch in range(1, num_epochs + 1):
-        train_loss = train_one_epoch(model, data, optimizer, criterion)
+        train_loss = train_one_epoch(model, data, optimizer, criterion, clip_grad_norm=clip_grad_norm)
 
         train_metrics = evaluate(model, data, criterion, data.train_mask)
         val_metrics = evaluate(model, data, criterion, data.val_mask)
@@ -106,12 +111,10 @@ def train_with_early_stopping(
 
     return history
 
-
 def print_test_evaluation(model, data, criterion, label: str = "Test") -> None:
     test_metrics = evaluate(model, data, criterion, data.test_mask)
 
     print(f" {label} Set Evaluation")
-    print(f"{'='*60}")
     print(f"  Loss          : {test_metrics['loss']:.4f}")
     print(f"  Accuracy      : {test_metrics['accuracy']:.4f}")
     print(f"  Precision(ill): {test_metrics['precision_ill']:.4f}")
@@ -119,7 +122,6 @@ def print_test_evaluation(model, data, criterion, label: str = "Test") -> None:
     print(f"  F1(illicit)   : {test_metrics['f1_ill']:.4f}")
     print(f"  F1(macro)     : {test_metrics['f1_macro']:.4f}")
     print(f"  AUC-PR        : {test_metrics['auc_pr']:.4f}")
-    print(f"{'='*60}\n")
 
     model.eval()
     with torch.no_grad():
