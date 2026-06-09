@@ -1,0 +1,133 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="zJtl1OsshKs7Rk_-d-01">
+    <mxGraphModel dx="1363" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="JKmieHay_KcFVTyH2bCY-3" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;Raw Elliptic CSV Files&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="130" x="199" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-5" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;Data Preprocessing &amp;amp; Graph Construction&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="130" x="199" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-9" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-10" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-11" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;Temporal Split&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="130" x="199" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-17" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.127;exitY=0.991;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" target="JKmieHay_KcFVTyH2bCY-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;Training Set&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Tahoma&quot;&gt;26.381 nodes&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="90" x="89" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;Validation Set&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Tahoma&quot;&gt;3513 nodes&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="129" x="200" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;Test Set&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Tahoma&quot;&gt;16.670 nodes&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="80" x="350" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-29" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-14" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-30" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-31" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-14" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;GNN Pipeline&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="120" x="120" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-22" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-15" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-23" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-15" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-24" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-15" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-25" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-15" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;XGBoost Pipeline&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="120" x="120" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-16" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.301;entryY=0.037;entryDx=0;entryDy=0;entryPerimeter=0;" target="JKmieHay_KcFVTyH2bCY-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-33" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-18" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;Version A&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Tahoma&quot;&gt;165 features&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="120" x="280" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-34" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-19" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;Version B&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Tahoma&quot;&gt;+ time_step&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="120" x="280" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-35" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-20" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;Version C&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Tahoma&quot;&gt;+ graph topology&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="120" x="280" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-36" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-21" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;Version D&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Tahoma&quot;&gt;93 local features&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="120" x="280" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-37" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-26" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-26" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;GCN 2-layer&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Tahoma&quot;&gt;hidden = 64&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="120" x="280" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-38" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-27" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-27" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;GraphSAGE 2-layer&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Tahoma&quot;&gt;hidden = 64&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="120" x="280" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-39" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-28" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-28" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;GATv2 2-layer&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Tahoma&quot;&gt;2-heads&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="120" x="280" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-41" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-32" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Multi-seed (3)" vertex="1">
+          <mxGeometry height="40" width="120" x="480" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-43" edge="1" parent="1" source="JKmieHay_KcFVTyH2bCY-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="JKmieHay_KcFVTyH2bCY-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-40" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Comparative Analysis" vertex="1">
+          <mxGeometry height="40" width="120" x="480" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="JKmieHay_KcFVTyH2bCY-42" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Results" vertex="1">
+          <mxGeometry height="50" width="120" x="480" y="610" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
