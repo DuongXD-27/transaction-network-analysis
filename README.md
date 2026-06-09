@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔍 Transaction Network Analysis
+# Transaction Network Analysis
 
 ### Detecting Illicit Transactions on Bitcoin Blockchain using Graph Neural Networks & XGBoost
 
@@ -65,7 +65,7 @@ Binary node classification: **Illicit vs. Licit** transaction detection, evaluat
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ### End-to-End Pipeline
 
@@ -346,7 +346,7 @@ Threshold tuning on the validation set allows practitioners to choose their oper
 
 ---
 
-## 📚 References
+## References
 
 1. **Weber, M., et al.** (2019). *Anti-Money Laundering in Bitcoin: Experimenting with Graph Convolutional Networks for Financial Forensics.* KDD Workshop on Anomaly Detection in Finance.
 2. **Kipf, T. N., & Welling, M.** (2017). *Semi-Supervised Classification with Graph Convolutional Networks.* ICLR.
@@ -357,7 +357,7 @@ Threshold tuning on the validation set allows practitioners to choose their oper
 
 ---
 
-## 📄 License
+## License
 
 **All Rights Reserved.**
 
