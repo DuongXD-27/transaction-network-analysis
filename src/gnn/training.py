@@ -96,7 +96,7 @@ def train_with_early_stopping(
         else:
             epochs_no_improve += 1
 
-        print(f"Epoch {epoch:03d}: Train Loss={train_loss:.4f}, Val Loss={val_loss:.4f}"
+        print(f"Epoch {epoch:03d}: Train Loss={train_loss:.4f}, Val Loss={val_loss:.4f}, "
               f"Train F1={train_f1:.4f}, Val F1={val_f1:.4f}, "
               f"Gap={train_f1 - val_f1:.4f}")
 
