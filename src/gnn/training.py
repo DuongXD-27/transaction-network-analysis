@@ -108,7 +108,7 @@ def train_with_early_stopping(
 def print_test_evaluation(model, data, criterion, label: str = "Test") -> None:
     test_metrics = evaluate(model, data, criterion, data.test_mask)
 
-    print(f" {label} Set Evaluation")
+    print(f"{label}")
     print(f"  Loss          : {test_metrics['loss']:.4f}")
     print(f"  Accuracy      : {test_metrics['accuracy']:.4f}")
     print(f"  Precision(ill): {test_metrics['precision_ill']:.4f}")
