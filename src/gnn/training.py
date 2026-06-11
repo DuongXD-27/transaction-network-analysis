@@ -100,13 +100,8 @@ def train_with_early_stopping(
               f"Gap={train_f1 - val_f1:.4f}")
 
         if epochs_no_improve >= patience:
-            print(f"\nEarly stopping at epoch {epoch} (Best epoch: {best_epoch})")
+            print(f"Early stopping at epoch {epoch} (Best epoch: {best_epoch})")
             break
-
-    print(f"\nBest Val {monitor_metric}: {best_val_score:.4f} at epoch {best_epoch}")
-    print(f"Train F1 at best epoch: {history['train_f1'][best_epoch-1]:.4f}")
-    print(f"Val   F1 at best epoch: {history['val_f1'][best_epoch-1]:.4f}")
-    print(f"Gap at best epoch: {history['train_f1'][best_epoch-1] - history['val_f1'][best_epoch-1]:.4f}")
 
     return history
 
