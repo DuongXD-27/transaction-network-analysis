@@ -3,7 +3,7 @@ import numpy as np
 def run_multiseed(run_single_seed_fn, exp_name="Experiment", seeds=[42, 0, 123]):
     results = []
     for seed in seeds:
-        print(f"{exp_name} - Seed: {seed}")
+        print(f"\n{exp_name} - Seed: {seed}")
         metrics = run_single_seed_fn(seed)
         metrics['seed'] = seed
         results.append(metrics)
