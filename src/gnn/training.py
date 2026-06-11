@@ -90,7 +90,7 @@ def train_with_early_stopping(
         history['val_f1'].append(val_f1)
 
         if scheduler is not None:
-            scheduler.step(val_metrics[monitor_metric])
+            scheduler.step()
 
         if val_metrics[monitor_metric] > best_val_score:
             best_val_score = val_metrics[monitor_metric]
