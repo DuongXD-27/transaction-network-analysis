@@ -67,6 +67,7 @@ def train_with_early_stopping(
     patience: int = 20,
     monitor_metric: str = 'f1_ill',
     clip_grad_norm=None,
+    scheduler=None,
 ) -> dict:
     history = {'train_loss': [], 'val_loss': [], 'train_f1': [], 'val_f1': []}
     best_val_score = 0.0
@@ -87,6 +88,9 @@ def train_with_early_stopping(
         history['val_loss'].append(val_loss)
         history['train_f1'].append(train_f1)
         history['val_f1'].append(val_f1)
+
+        if scheduler is not None:
+            scheduler.step(val_metrics[monitor_metric])
 
         if val_metrics[monitor_metric] > best_val_score:
             best_val_score = val_metrics[monitor_metric]
