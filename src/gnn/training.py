@@ -81,9 +81,10 @@ def train_with_early_stopping(
 
         train_f1 = train_metrics['f1_ill']
         val_f1 = val_metrics['f1_ill']
+        val_loss = val_metrics['loss']
 
         history['train_loss'].append(train_loss)
-        history['val_loss'].append(val_metrics['loss'])
+        history['val_loss'].append(val_loss)
         history['train_f1'].append(train_f1)
         history['val_f1'].append(val_f1)
 
@@ -95,7 +96,7 @@ def train_with_early_stopping(
         else:
             epochs_no_improve += 1
 
-        print(f"Epoch {epoch:03d}: Train Loss={train_loss:.4f}, "
+        print(f"Epoch {epoch:03d}: Train Loss={train_loss:.4f}, Val Loss={val_loss:.4f}"
               f"Train F1={train_f1:.4f}, Val F1={val_f1:.4f}, "
               f"Gap={train_f1 - val_f1:.4f}")
 
