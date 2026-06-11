@@ -3,12 +3,12 @@ import numpy as np
 def run_multiseed(run_single_seed_fn, exp_name="Experiment", seeds=[42, 0, 123]):
     results = []
     for seed in seeds:
-        print(f"Training {exp_name} with seed {seed}...")
+        print(f"{exp_name} - Seed: {seed}")
         metrics = run_single_seed_fn(seed)
         metrics['seed'] = seed
         results.append(metrics)
         
-    print(f"\n{'='*40}\nFINAL {exp_name.upper()} MULTI-SEED RESULTS\n{'='*40}")
+    print(f"\n {exp_name} multi-seed results")
     
     metric_keys = [k for k in results[0].keys() if k != 'seed']
     
