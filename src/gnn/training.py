@@ -15,7 +15,6 @@ def compute_class_weights(data, device: torch.device) -> torch.Tensor:
         dtype=torch.float
     ).to(device)
 
-    print(f"Class weights: licit={weight[0]:.2f}, illicit={weight[1]:.2f}")
     return weight
 
 
