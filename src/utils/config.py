@@ -1,6 +1,6 @@
 from pathlib import Path
 
-BASE_DIR           = Path(__file__).resolve().parent.parent
+BASE_DIR           = Path(__file__).resolve().parent.parent.parent
 DATA_RAW_DIR       = BASE_DIR / "data" / "raw"
 DATA_PROCESSED_DIR = BASE_DIR / "data" / "processed"
 SAVED_MODELS_DIR   = BASE_DIR / "saved_models"
