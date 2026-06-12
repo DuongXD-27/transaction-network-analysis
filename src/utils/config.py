@@ -8,10 +8,7 @@ CLASSES_CSV_PATH = DATA_RAW_DIR / "elliptic_txs_classes.csv"
 EDGELIST_CSV_PATH = DATA_RAW_DIR / "elliptic_txs_edgelist.csv"
 
 TIME_SPLITS = {
-    "train": (1, 29),
-    "val": (30, 34),
-    "test": (35, 49),
+    "train": (1, 34),
+    "val": (35, 42),
+    "test": (43, 49),
 }
-
-SEED = 42
-
