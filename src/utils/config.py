@@ -14,6 +14,6 @@ PYG_DATA_PATH            = DATA_PROCESSED_DIR / "elliptic_pyg_data.pt"
 
 TIME_SPLITS = {
     "train": (1, 34),
-    "val":   (35, 42),
-    "test":  (43, 49),
+    "val":   (35, 38),
+    "test":  (39, 42),
 }

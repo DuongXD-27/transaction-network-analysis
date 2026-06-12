@@ -3,7 +3,7 @@ from torch_geometric.utils import to_undirected
 
 
 def load_and_preprocess_data(
-    data_path: str = '../data/processed/pyg_data.pt',
+    data_path: str = '../data/processed/elliptic_pyg_data.pt',
     device: torch.device | None = None,
     undirected: bool = True
 ) -> tuple:
@@ -11,7 +11,7 @@ def load_and_preprocess_data(
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"Device: {device}")
 
-    data = torch.load(data_path)
+    data = torch.load(data_path, weights_only=False)
     
     if undirected:
         data.edge_index = to_undirected(data.edge_index)
