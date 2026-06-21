@@ -3,7 +3,7 @@ import pandas as pd
 import torch
 import numpy as np
 from torch_geometric.data import Data
-from src.config import FEATURES_CSV_PATH, CLASSES_CSV_PATH, EDGELIST_CSV_PATH, TIME_SPLITS, DATA_PROCESSED_DIR
+from src.utils.config import FEATURES_CSV_PATH, CLASSES_CSV_PATH, EDGELIST_CSV_PATH, TIME_SPLITS, DATA_PROCESSED_DIR
 
 N_LOCAL_FEATURES = 93
 N_AGG_FEATURES = 72

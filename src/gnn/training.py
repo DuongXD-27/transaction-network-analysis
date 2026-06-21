@@ -15,7 +15,6 @@ def compute_class_weights(data, device: torch.device) -> torch.Tensor:
         dtype=torch.float
     ).to(device)
 
-    print(f"Class weights: licit={weight[0]:.2f}, illicit={weight[1]:.2f}")
     return weight
 
 
@@ -68,6 +67,7 @@ def train_with_early_stopping(
     patience: int = 20,
     monitor_metric: str = 'f1_ill',
     clip_grad_norm=None,
+    scheduler=None,
 ) -> dict:
     history = {'train_loss': [], 'val_loss': [], 'train_f1': [], 'val_f1': []}
     best_val_score = 0.0
@@ -82,11 +82,15 @@ def train_with_early_stopping(
 
         train_f1 = train_metrics['f1_ill']
         val_f1 = val_metrics['f1_ill']
+        val_loss = val_metrics['loss']
 
         history['train_loss'].append(train_loss)
-        history['val_loss'].append(val_metrics['loss'])
+        history['val_loss'].append(val_loss)
         history['train_f1'].append(train_f1)
         history['val_f1'].append(val_f1)
+
+        if scheduler is not None:
+            scheduler.step()
 
         if val_metrics[monitor_metric] > best_val_score:
             best_val_score = val_metrics[monitor_metric]
@@ -96,25 +100,20 @@ def train_with_early_stopping(
         else:
             epochs_no_improve += 1
 
-        print(f"Epoch {epoch:03d}: Train Loss={train_loss:.4f}, "
+        print(f"Epoch {epoch:03d}: Train Loss={train_loss:.4f}, Val Loss={val_loss:.4f}, "
               f"Train F1={train_f1:.4f}, Val F1={val_f1:.4f}, "
               f"Gap={train_f1 - val_f1:.4f}")
 
         if epochs_no_improve >= patience:
-            print(f"\nEarly stopping at epoch {epoch} (Best epoch: {best_epoch})")
+            print(f"Early stopping at epoch {epoch} (Best epoch: {best_epoch})")
             break
-
-    print(f"\nBest Val {monitor_metric}: {best_val_score:.4f} at epoch {best_epoch}")
-    print(f"Train F1 at best epoch: {history['train_f1'][best_epoch-1]:.4f}")
-    print(f"Val   F1 at best epoch: {history['val_f1'][best_epoch-1]:.4f}")
-    print(f"Gap at best epoch: {history['train_f1'][best_epoch-1] - history['val_f1'][best_epoch-1]:.4f}")
 
     return history
 
 def print_test_evaluation(model, data, criterion, label: str = "Test") -> None:
     test_metrics = evaluate(model, data, criterion, data.test_mask)
 
-    print(f" {label} Set Evaluation")
+    print(f"{label}")
     print(f"  Loss          : {test_metrics['loss']:.4f}")
     print(f"  Accuracy      : {test_metrics['accuracy']:.4f}")
     print(f"  Precision(ill): {test_metrics['precision_ill']:.4f}")
