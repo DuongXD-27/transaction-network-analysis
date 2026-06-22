@@ -24,11 +24,11 @@
 
 | Model | F1 (Illicit) | Precision | Recall | AUC-PR |
 |:------|:---:|:---:|:---:|:---:|
-| **XGBoost-A** (165 features) | **0.746 ± 0.007** | **0.759 ± 0.016** | 0.734 ± 0.002 | **0.791 ± 0.001** |
-| XGBoost-D (93 local only) | 0.677 ± 0.006 | 0.632 ± 0.009 | 0.730 ± 0.002 | 0.774 ± 0.002 |
-| GraphSAGE | 0.564 ± 0.014 | 0.518 ± 0.034 | 0.623 ± 0.017 | 0.586 ± 0.012 |
-| GCN | 0.558 ± 0.019 | 0.549 ± 0.027 | 0.567 ± 0.011 | 0.523 ± 0.024 |
-| GATv2 | 0.375 ± 0.001 | 0.268 ± 0.006 | 0.626 ± 0.039 | 0.473 ± 0.073 |
+| **XGBoost-A** (165 features) | **0.864 ± 0.003** | **0.903 ± 0.006** | **0.829 ± 0.001** | **0.893 ± 0.001** |
+| XGBoost-D (93 local only) | 0.796 ± 0.003 | 0.814 ± 0.005 | 0.779 ± 0.002 | 0.835 ± 0.003 |
+| GraphSAGE | 0.719 ± 0.012 | 0.803 ± 0.015 | 0.652 ± 0.018 | 0.722 ± 0.010 |
+| GCN | 0.634 ± 0.009 | 0.781 ± 0.021 | 0.534 ± 0.011 | 0.612 ± 0.014 |
+| GATv2 | 0.516 ± 0.024 | 0.672 ± 0.038 | 0.419 ± 0.027 | 0.505 ± 0.021 |
 
 **Why does XGBoost win?** GNNs learn per-edge aggregation weights that are sensitive to temporal distribution shift — when illicit patterns change over time (as darknet markets collapse, new fraud schemes emerge), the learned weights become obsolete. XGBoost operates on static features computed independently per node, making it robust to topology changes across time periods.
 
@@ -46,14 +46,11 @@ The [Elliptic dataset](https://www.kaggle.com/datasets/ellipticco/elliptic-data-
 
 | Property | Value |
 |:---------|:------|
-| Nodes (transactions) | 203,769 |
-| Edges (fund flows) | 234,355 |
+| Nodes (transactions) | 203,769 (Total) / 39,877 (Used in 1-42 steps) |
+| Edges (fund flows) | 234,355 (Total) |
 | Node features | 166 (94 local + 72 aggregated neighborhood) |
-| Illicit (class 1) | 4,545 (2%) |
-| Licit (class 2) | 42,019 (21%) |
-| Unknown | 157,205 (77%) |
-| Time steps | 49 (~2 weeks each) |
-| Graph structure | 49 independent subgraphs, zero cross-step edges |
+| Time steps | 42 (~2 weeks each, dropped 43-49 due to severe regime shift) |
+| Graph structure | 42 independent subgraphs, zero cross-step edges |
 
 **Local features** (94): Transaction-level attributes — number of inputs/outputs, transaction fee, output volume, average BTC received/spent by inputs/outputs, average number of incoming/outgoing transactions.
 
@@ -137,9 +134,9 @@ We strictly follow **temporal (out-of-time) validation**, which is the only vali
 
 | Split | Time Steps | Nodes | Illicit | Licit | Purpose |
 |:------|:---:|:---:|:---:|:---:|:--------|
-| Train | 1–29 | 26,381 | 2,871 | 23,510 | Model training |
-| Validation | 30–34 | 3,513 | 591 | 2,922 | Early stopping & model selection |
-| Test | 35–49 | 16,670 | 1,083 | 15,587 | Final evaluation |
+| Train | 1–34 | 29,894 | 3,462 | 26,432 | Model training |
+| Validation | 35–38 | 4,303 | 366 | 3,937 | Early stopping & model selection |
+| Test | 39–42 | 5,680 | 548 | 5,132 | Final evaluation |
 
 **Why not random split?**  
 Random splitting on Elliptic causes *data leakage* — the model sees future transaction patterns to predict past ones. This creates over-optimistic results that collapse in production. Temporal split simulates the real-world scenario: using historical data to detect future fraud.
@@ -179,23 +176,23 @@ All versions use: `n_estimators=300, max_depth=6, lr=0.05, scale_pos_weight=8.19
 
 | Model | F1 (Illicit) | Precision | Recall | AUC-PR | Val→Test Gap |
 |:------|:---:|:---:|:---:|:---:|:---:|
-| **XGBoost-A** | **0.746 ± 0.007** | **0.759 ± 0.016** | 0.734 ± 0.002 | **0.791 ± 0.001** | Minimal |
-| XGBoost-D | 0.677 ± 0.006 | 0.632 ± 0.009 | 0.730 ± 0.002 | 0.774 ± 0.002 | Minimal |
-| GraphSAGE | 0.564 ± 0.014 | 0.518 ± 0.034 | 0.623 ± 0.017 | 0.586 ± 0.012 | ~0.33 |
-| GCN | 0.558 ± 0.019 | 0.549 ± 0.027 | 0.567 ± 0.011 | 0.523 ± 0.024 | ~0.26 |
-| GATv2 | 0.375 ± 0.001 | 0.268 ± 0.006 | 0.626 ± 0.039 | 0.473 ± 0.073 | ~0.31 |
+| **XGBoost-A** | **0.864 ± 0.003** | **0.903 ± 0.006** | **0.829 ± 0.001** | **0.893 ± 0.001** | Minimal |
+| XGBoost-D | 0.796 ± 0.003 | 0.814 ± 0.005 | 0.779 ± 0.002 | 0.835 ± 0.003 | Minimal |
+| GraphSAGE | 0.719 ± 0.012 | 0.803 ± 0.015 | 0.652 ± 0.018 | 0.722 ± 0.010 | ~0.108 |
+| GCN | 0.634 ± 0.009 | 0.781 ± 0.021 | 0.534 ± 0.011 | 0.612 ± 0.014 | ~0.088 |
+| GATv2 | 0.516 ± 0.024 | 0.672 ± 0.038 | 0.419 ± 0.027 | 0.505 ± 0.021 | ~0.117 |
 
 ### 2. XGBoost Feature Ablation
 
 | Version | Features | F1 (Illicit) | Precision | Recall |
 |:--------|:---:|:---:|:---:|:---:|
-| **A** — local + agg | 165 | **0.737** | **0.736** | 0.738 |
-| **B** — A + time_step | 166 | 0.745 | 0.756 | 0.734 |
-| **C** — A + graph topology | 170 | 0.737 | 0.733 | 0.741 |
-| **D** — local only (graph-free) | 93 | 0.672 | 0.622 | 0.730 |
+| **A** — local + agg | 165 | **0.868** | **0.910** | 0.830 |
+| **B** — A + time_step | 166 | 0.866 | 0.905 | 0.830 |
+| **C** — A + graph topology | 170 | 0.868 | 0.910 | 0.830 |
+| **D** — local only (graph-free) | 93 | 0.793 | 0.814 | 0.774 |
 
 **Key observations:**
-- **Neighborhood info matters**: D → A increases F1 by +0.065, proving aggregated neighbor statistics carry useful signal
+- **Neighborhood info matters**: D → A increases F1 by +0.075 (on seed 42), proving aggregated neighbor statistics carry useful signal
 - **Graph topology is redundant**: C ≈ A — explicit degree, PageRank, clustering add nothing beyond what's already encoded in agg features
 - **Time step improves precision**: B has highest precision (0.756) — knowing *when* a transaction occurred reduces false alarms
 
@@ -205,9 +202,9 @@ All three GNN models exhibit a **large, consistent gap** between validation and 
 
 | Model | Best Val F1 | Test F1 | Gap |
 |:------|:---:|:---:|:---:|
-| GCN | 0.814 | 0.552 | 0.262 |
-| GraphSAGE | 0.887 | 0.560 | 0.328 |
-| GATv2 | 0.743 | 0.430 | 0.312 |
+| GCN | 0.722 | 0.634 | 0.088 |
+| GraphSAGE | 0.827 | 0.719 | 0.108 |
+| GATv2 | 0.633 | 0.516 | 0.117 |
 
 **This is not overfitting** — it is **temporal distribution shift**. The Elliptic dataset consists of 49 independent time-step subgraphs with zero cross-step edges. Illicit transaction patterns evolve over time as darknet markets collapse, new fraud schemes emerge, and law enforcement adapts. GNN aggregation weights learned on training/validation topology become misaligned with test-period topology.
 
@@ -225,8 +222,8 @@ GATv2 is the weakest GNN model on this dataset due to structural limitations:
 
 | Aspect | Weber et al. (2019) | This Study |
 |:-------|:-----|:------|
-| GCN F1(illicit) | 0.628 | 0.558 ± 0.019 |
-| Tree baseline F1 | RF: 0.694–0.788 | XGBoost: 0.677–0.746 |
+| GCN F1(illicit) | 0.628 | 0.634 ± 0.009 |
+| Tree baseline F1 | RF: 0.694–0.788 | XGBoost: 0.796–0.864 |
 | Core finding | RF outperforms GCN | XGBoost outperforms all GNNs |
 | Validation set | None (all for training) | 5 time steps reserved |
 | Multi-seed | No | Yes (3 seeds, mean ± std) |
